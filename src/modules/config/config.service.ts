@@ -11,7 +11,7 @@ export class ConfigService {
     constructor () {
       const isDevelopmentEnv = process.env.NODE_ENV !== 'production'
       if (isDevelopmentEnv) {
-        const envFilePath = join(__dirname, '../../.env')
+        const envFilePath = join(__dirname, '../../../.env')
         const existsPath = existsSync(envFilePath)
         if (!existsPath) {
           throw new Error('.env file does not exist')
