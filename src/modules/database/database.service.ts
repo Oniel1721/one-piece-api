@@ -12,6 +12,7 @@ export const databaseProviders = [
     async useFactory (config: ConfigService) {
       return {
         ssl: false,
+        synchronize: true,
         type: 'postgres' as const,
         host: config.get(EnvVariablesEnum.DB_HOST),
         username: config.get(EnvVariablesEnum.DB_USER),

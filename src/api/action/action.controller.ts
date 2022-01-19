@@ -1,4 +1,17 @@
-import { Controller } from '@nestjs/common'
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common'
+import { ActionService } from './action.service'
 
 @Controller('action')
-export class ActionController {}
+export class ActionController {
+  constructor (private readonly _actionService: ActionService) {}
+
+  @Get()
+  async findAll () {
+    return await this._actionService.findAll()
+  }
+
+  @Get('/:id')
+  async findByUserId (@Param('id', ParseIntPipe) id: number) {
+    return await this._actionService.findByUserId(id)
+  }
+}
