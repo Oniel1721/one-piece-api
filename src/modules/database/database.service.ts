@@ -11,7 +11,7 @@ export const databaseProviders = [
     inject: [ConfigService],
     async useFactory (config: ConfigService) {
       return {
-        ssl: true,
+        ssl: false,
         type: 'postgres' as const,
         host: config.get(EnvVariablesEnum.DB_HOST),
         username: config.get(EnvVariablesEnum.DB_USER),
