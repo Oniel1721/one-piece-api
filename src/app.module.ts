@@ -5,9 +5,10 @@ import { EnvVariablesEnum } from './types/config.types'
 import { DatabaseModule } from './modules/database/database.module'
 import { UserModule } from './api/user/user.module'
 import { ActionModule } from './api/action/action.module'
+import { AuthModule } from './api/auth/auth.module'
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, UserModule, ActionModule]
+  imports: [ConfigModule, DatabaseModule, UserModule, ActionModule, AuthModule]
 })
 export class AppModule {
   static port: number;
