@@ -4,7 +4,8 @@ export enum EnvVariablesEnum {
     DB_PORT = 'DB_PORT',
     DB_PASS = 'DB_PASS',
     DB_HOST = 'DB_HOST',
-    DB_USER = 'DB_USER'
+    DB_USER = 'DB_USER',
+    JWT_SECRET = 'JWT_SECRET'
 }
 
 export type EnvConfigType = {

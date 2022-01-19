@@ -5,7 +5,7 @@ import { UserRepository } from './user.repository'
 import { plainToInstance } from 'class-transformer'
 import { CreateUserDto } from './dto/create.user.dto'
 import { StatusEnum } from '../../types/status.enum'
-import { FindOneOptions, UpdateResult } from 'typeorm'
+import { FindCondition, UpdateResult } from 'typeorm'
 import { User } from './user.entity'
 import { ActionService } from '../action/action.service'
 import { ActionEnum } from '../action/action.enum'
@@ -25,10 +25,11 @@ export class UserService {
     return planed
   }
 
-  async findOne (body: FindOneOptions<User>):Promise<FindUserDto> {
-    const user = await this._userRepository.findOne(body)
-    const planed = plainToInstance(FindUserDto, user)
-    return planed
+  async findOne (where: FindCondition<User>):Promise<User> {
+    const user = await this._userRepository.findOne({
+      where
+    })
+    return user
   }
 
   async findById (id:number):Promise<FindUserDto> {
