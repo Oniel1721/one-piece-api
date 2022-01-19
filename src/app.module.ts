@@ -2,9 +2,11 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from './modules/config/config.module'
 import { ConfigService } from './modules/config/config.service'
 import { EnvVariablesEnum } from './types/config.types'
+import { DatabaseModule } from './modules/database/database.module'
+import { UserModule } from './api/user/user.module';
 
 @Module({
-  imports: [ConfigModule]
+  imports: [ConfigModule, DatabaseModule, UserModule]
 })
 export class AppModule {
   static port: number;
