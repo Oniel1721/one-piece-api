@@ -9,6 +9,7 @@ import { FindOneOptions, UpdateResult } from 'typeorm'
 import { User } from './user.entity'
 import { ActionService } from '../action/action.service'
 import { ActionEnum } from '../action/action.enum'
+import { genSaltSync, hashSync } from 'bcrypt'
 
 @Injectable()
 export class UserService {
@@ -39,8 +40,15 @@ export class UserService {
     return planed
   }
 
+  private cryptPassword (password:string):string {
+    const saltRound = 15
+    const salt = genSaltSync(saltRound)
+    return hashSync(password, salt)
+  }
+
   async create (body: CreateUserDto):Promise<FindUserDto> {
-    const user = await this._userRepository.save({ ...body, status: StatusEnum.ACTIVE })
+    const password = this.cryptPassword(body.password)
+    const user = await this._userRepository.save({ ...body, status: StatusEnum.ACTIVE, password })
     await this._actionService.create(user, ActionEnum.USER_CREATED)
     const planed = plainToInstance(FindUserDto, user)
     return planed
