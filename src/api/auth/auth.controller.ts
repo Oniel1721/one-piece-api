@@ -8,7 +8,7 @@ import { LocalAuthGuard } from './local.guard'
 @Controller('auth')
 export class AuthController {
   @ApiResponse({
-    type: [LoginDto]
+    type: LoginDto
   })
   @UseGuards(LocalAuthGuard)
   @Post('/login')

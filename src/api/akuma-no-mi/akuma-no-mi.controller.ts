@@ -5,8 +5,11 @@ import { FindAkumaNoMiDto } from './dto/find.akuma-no-mi.dto'
 import { AkumaNoMi } from './akuma-no-mi.entity'
 import { AkumaNoMiRepository } from './akuma-no-mi.repository'
 import { AkumaNoMiService } from './akuma-no-mi.service'
-
-@Controller('akumaNoMi')
+import { ApiResponse } from '@nestjs/swagger'
+@ApiResponse({
+  type: FindAkumaNoMiDto
+})
+@Controller('akuma-no-mi')
 export class AkumaNoMiController extends CommonController<
     AkumaNoMi,
     AkumaNoMiRepository,

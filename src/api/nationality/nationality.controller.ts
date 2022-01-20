@@ -5,7 +5,10 @@ import { FindNationalityDto } from './dto/find.nationality.dto'
 import { Nationality } from './nationality.entity'
 import { NationalityRepository } from './nationality.repository'
 import { NationalityService } from './nationality.service'
-
+import { ApiResponse } from '@nestjs/swagger'
+@ApiResponse({
+  type: FindNationalityDto
+})
 @Controller('nationality')
 export class NationalityController extends CommonController<
     Nationality,

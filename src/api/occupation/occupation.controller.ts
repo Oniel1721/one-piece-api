@@ -5,7 +5,10 @@ import { FindOccupationDto } from './dto/find.occupation.dto'
 import { Occupation } from './occupation.entity'
 import { OccupationRepository } from './occupation.repository'
 import { OccupationService } from './occupation.service'
-
+import { ApiResponse } from '@nestjs/swagger'
+@ApiResponse({
+  type: FindOccupationDto
+})
 @Controller('occupation')
 export class OccupationController extends CommonController<
     Occupation,

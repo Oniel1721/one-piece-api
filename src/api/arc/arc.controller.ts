@@ -5,7 +5,10 @@ import { FindArcDto } from './dto/find.arc.dto'
 import { Arc } from './arc.entity'
 import { ArcRepository } from './arc.repository'
 import { ArcService } from './arc.service'
-
+import { ApiResponse } from '@nestjs/swagger'
+@ApiResponse({
+  type: FindArcDto
+})
 @Controller('arc')
 export class ArcController extends CommonController<
     Arc,

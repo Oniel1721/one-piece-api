@@ -1,12 +1,14 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Req, Res, UseGuards } from '@nestjs/common'
-import { ApiResponse } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger'
 import { Request, Response } from 'express'
+import { BearerAuth } from '../../types/const.bearer.auth'
 import { JwtAuthGuard } from '../auth/jwt.guard'
 import { CreateUserDto } from './dto/create.user.dto'
 import { FindUserDto } from './dto/find.user.dto'
 import { User } from './user.entity'
 import { UserService } from './user.service'
 
+@ApiBearerAuth(BearerAuth)
 @Controller('user')
 export class UserController {
   constructor (

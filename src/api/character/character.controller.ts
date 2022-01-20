@@ -5,7 +5,10 @@ import { FindCharacterDto } from './dto/find.character.dto'
 import { Character } from './character.entity'
 import { CharacterRepository } from './character.repository'
 import { CharacterService } from './character.service'
-
+import { ApiResponse } from '@nestjs/swagger'
+@ApiResponse({
+  type: FindCharacterDto
+})
 @Controller('character')
 export class CharacterController extends CommonController<
     Character,

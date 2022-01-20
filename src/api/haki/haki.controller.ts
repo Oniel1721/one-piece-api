@@ -5,7 +5,10 @@ import { FindHakiDto } from './dto/find.haki.dto'
 import { Haki } from './haki.entity'
 import { HakiRepository } from './haki.repository'
 import { HakiService } from './haki.service'
-
+import { ApiResponse } from '@nestjs/swagger'
+@ApiResponse({
+  type: FindHakiDto
+})
 @Controller('haki')
 export class HakiController extends CommonController<
     Haki,
