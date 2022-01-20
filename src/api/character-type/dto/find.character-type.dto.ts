@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Expose, Type } from 'class-transformer'
-export class FindChapterTypeDto {
+export class FindCharacterTypeDto {
     @ApiProperty({
       minimum: 1
     })

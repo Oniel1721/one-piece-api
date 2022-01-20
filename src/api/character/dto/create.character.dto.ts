@@ -1,3 +1,3 @@
 
-export class CreateChapterDto {
+export class CreateCharacterDto {
 }
