@@ -13,7 +13,7 @@ import { ClassConstructor, plainToInstance } from 'class-transformer'
 export class CommonService<Entity extends BaseEntity, Repo extends Repository<Entity>> {
   public readonly entityName: string;
   constructor (private readonly _commonRepository: Repo) {
-    // this.entityName = this._commonRepository.metadata.name
+    this.entityName = this._commonRepository.metadata.name
   }
 
   async findAll<FindDto> (

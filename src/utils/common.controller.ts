@@ -6,10 +6,12 @@ import {
   Param,
   ParseIntPipe,
   Body,
-  Post
+  Post,
+  UseGuards
 } from '@nestjs/common'
 import { BaseEntity, UpdateResult, Repository } from 'typeorm'
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity'
+import { JwtAuthGuard } from '../api/auth/jwt.guard'
 
 export class CommonController<
   Entity extends BaseEntity,
@@ -33,11 +35,13 @@ export class CommonController<
     return await this._commonService.findById(id, this._findDto)
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   async create (@Body() body: CreateDto):Promise<FindDto> {
     return await this._commonService.create(body, this._findDto)
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   async update (
     @Param('id', ParseIntPipe) id: number,
