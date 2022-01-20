@@ -37,11 +37,20 @@ export class CreateSagaDto {
       description: 'at wich chapter end the saga',
       required: false
     })
+    @Min(2)
+    @Max(2000)
+    @Allow()
+    to: number | null
+
+    @ApiProperty({
+      minimum: 2,
+      maximum: 2000,
+      description: 'count of chapters of the saga',
+      required: false
+    })
     @IsInt()
     @Min(2)
     @Max(2000)
     @Allow()
-    to?: number | null
-
     length: number
 }

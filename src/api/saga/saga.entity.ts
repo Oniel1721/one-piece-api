@@ -5,24 +5,24 @@ export class Saga extends BaseEntity {
     @PrimaryGeneratedColumn('increment')
     id: number
 
-    @Column({ type: 'varchar', nullable: true, length: 100 })
+    @Column({ type: 'varchar', nullable: false, length: 100 })
     name: string
 
-    @Column({ type: 'varchar', nullable: true, length: 1000 })
+    @Column({ type: 'varchar', nullable: false, length: 1000 })
     plot: string
 
-    @Column({ type: 'int', nullable: true })
+    @Column({ type: 'int', nullable: false })
     from: number
 
     @Column({ type: 'int', nullable: true })
     to: number | null
 
-    @Column({ type: 'int', nullable: true })
+    @Column({ type: 'int', nullable: false })
     length: number
 
-    @CreateDateColumn({ type: 'timestamp', name: 'created_at', nullable: true })
+    @CreateDateColumn({ type: 'timestamp', name: 'created_at', nullable: false })
     createdAt: Date
 
-    @UpdateDateColumn({ type: 'timestamp', name: 'updated_at', nullable: true })
+    @UpdateDateColumn({ type: 'timestamp', name: 'updated_at', nullable: false })
     updatedAt: Date
 }

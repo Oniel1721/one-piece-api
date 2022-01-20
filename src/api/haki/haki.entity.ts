@@ -1,6 +1,6 @@
 import { BaseEntity, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
-@Entity('Hakis')
+@Entity('hakis')
 export class Haki extends BaseEntity {
     @PrimaryGeneratedColumn('increment')
     id: number

@@ -1,19 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger'
-import { Expose, Type } from 'class-transformer'
-export class FindNationalityDto {
-    @ApiProperty({
-      minimum: 1
-    })
-    @Expose()
-    id: number
+import { FindCommonDto } from '../../../utils/common.find.dto'
+export class FindNationalityDto extends FindCommonDto {
 
-    @ApiProperty()
-    @Expose()
-    @Type(() => Date)
-    createdAt: Date
-
-    @ApiProperty()
-    @Expose()
-    @Type(() => Date)
-    updatedAt: Date
 }

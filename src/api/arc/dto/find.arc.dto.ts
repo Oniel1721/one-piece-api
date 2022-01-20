@@ -1,19 +1,50 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { Expose, Type } from 'class-transformer'
-export class FindArcDto {
-    @ApiProperty({
-      minimum: 1
-    })
-    @Expose()
-    id: number
+import { Expose } from 'class-transformer'
+import { FindSagaDto } from '../../saga/dto/find.saga.dto'
+import { FindCommonDto } from '../../../utils/common.find.dto'
 
-    @ApiProperty()
-    @Expose()
-    @Type(() => Date)
-    createdAt: Date
+export class FindArcDto extends FindCommonDto {
+  @ApiProperty({
+    minLength: 2,
+    maxLength: 100,
+    description: 'name of the arc'
+  })
+  @Expose()
+  name: string
 
-    @ApiProperty()
-    @Expose()
-    @Type(() => Date)
-    updatedAt: Date
+  @ApiProperty({
+    minLength: 25,
+    maxLength: 1000,
+    description: 'plot of the arc'
+  })
+  @Expose()
+  plot: string
+
+  @ApiProperty({
+    minimum: 1,
+    maximum: 2000,
+    description: 'at wich chapter start the arc'
+  })
+  @Expose()
+  from: number
+
+  @ApiProperty({
+    minimum: 2,
+    maximum: 2000,
+    description: 'at wich chapter end the arc'
+  })
+  @Expose()
+  to: number | null
+
+  @ApiProperty({
+    minimum: 1,
+    maximum: 1000,
+    description: 'count of chapters of the arc'
+  })
+  @Expose()
+  length: number
+
+  @ApiProperty()
+  @Expose()
+  saga: FindSagaDto
 }
