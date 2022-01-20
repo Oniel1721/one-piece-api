@@ -1,3 +1,4 @@
+import { RelationId } from './../../../types/relation.id'
 import { ApiProperty } from '@nestjs/swagger'
 import { Allow, IsInt, IsNotEmpty, IsObject, IsString, Length, Max, Min } from 'class-validator'
 
@@ -45,7 +46,7 @@ export class CreateArcDto {
 
     @ApiProperty()
     @IsObject()
-    saga:{id:number}
+    saga:RelationId
 
     @ApiProperty({
       minimum: 2,

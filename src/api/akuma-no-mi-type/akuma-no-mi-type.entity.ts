@@ -1,9 +1,15 @@
-import { BaseEntity, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity('akuma_no_mi_types')
 export class AkumaNoMiType extends BaseEntity {
     @PrimaryGeneratedColumn('increment')
     id: number
+
+    @Column({ type: 'varchar', nullable: false, length: 100 })
+    name: string
+
+    @Column({ type: 'varchar', nullable: false, length: 1000 })
+    description: string
 
     @CreateDateColumn({ type: 'timestamp', name: 'created_at', nullable: false })
     createdAt: Date
