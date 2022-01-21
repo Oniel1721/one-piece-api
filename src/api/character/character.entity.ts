@@ -36,7 +36,7 @@ export class Character extends BaseEntity {
     @Column({ type: 'float', nullable: true })
     height: number | null
 
-    @Column({ type: 'date', name: 'birth_date', length: 5, nullable: true })
+    @Column({ type: 'date', name: 'birth_date', nullable: true })
     birthDate: Date | null
 
     @Column({ type: 'varchar', name: 'debut_info', length: 1000, nullable: true })
