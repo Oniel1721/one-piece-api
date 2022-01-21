@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { Allow, IsInt, IsNotEmpty, IsString, Length, Max, Min } from 'class-validator'
+import { IsInt, IsNotEmpty, IsOptional, IsString, Length, Max, Min } from 'class-validator'
 
 export class CreateSagaDto {
     @ApiProperty({
@@ -37,9 +37,9 @@ export class CreateSagaDto {
       description: 'at wich chapter end the saga',
       required: false
     })
+    @IsOptional()
     @Min(2)
     @Max(2000)
-    @Allow()
     to: number | null
 
     @ApiProperty({
@@ -48,9 +48,9 @@ export class CreateSagaDto {
       description: 'count of chapters of the saga',
       required: false
     })
+    @IsOptional()
     @IsInt()
     @Min(2)
     @Max(2000)
-    @Allow()
     length: number
 }

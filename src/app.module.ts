@@ -20,6 +20,7 @@ import { CharacterTypeModule } from './api/character-type/character-type.module'
 import { OccupationModule } from './api/occupation/occupation.module'
 import { OrganizationModule } from './api/organization/organization.module'
 import { GroupModule } from './api/group/group.module'
+import { VolumeModule } from './api/volume/volume.module'
 
 @Module({
   imports: [
@@ -41,7 +42,9 @@ import { GroupModule } from './api/group/group.module'
     CharacterTypeModule,
     OccupationModule,
     OrganizationModule,
-    GroupModule],
+    GroupModule,
+    VolumeModule
+  ],
   controllers: [],
   providers: []
 })

@@ -1,6 +1,6 @@
 import { RelationId } from './../../../types/relation.id'
 import { ApiProperty } from '@nestjs/swagger'
-import { Allow, IsInt, IsNotEmpty, IsObject, IsString, Length, Max, Min } from 'class-validator'
+import { IsInt, IsNotEmpty, IsNotEmptyObject, IsOptional, IsString, Length, Max, Min } from 'class-validator'
 
 export class CreateArcDto {
     @ApiProperty({
@@ -38,14 +38,14 @@ export class CreateArcDto {
       description: 'at wich chapter end the arc',
       required: false
     })
+    @IsOptional()
     @IsInt()
     @Min(2)
     @Max(2000)
-    @Allow()
     to?: number | null
 
     @ApiProperty()
-    @IsObject()
+    @IsNotEmptyObject()
     saga:RelationId
 
     @ApiProperty({
@@ -54,9 +54,9 @@ export class CreateArcDto {
       description: 'count of chapters of the arc',
       required: false
     })
+    @IsOptional()
     @IsInt()
     @Min(2)
     @Max(2000)
-    @Allow()
     length: number
 }

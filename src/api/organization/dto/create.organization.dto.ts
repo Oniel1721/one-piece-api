@@ -1,6 +1,6 @@
 import { RelationId } from './../../../types/relation.id'
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, IsObject, IsString, Length } from 'class-validator'
+import { IsNotEmpty, IsNotEmptyObject, IsString, Length } from 'class-validator'
 
 export class CreateOrganizationDto {
     @ApiProperty({
@@ -24,6 +24,6 @@ export class CreateOrganizationDto {
     description: string
 
     @ApiProperty()
-    @IsObject()
+    @IsNotEmptyObject()
     type:RelationId
 }
