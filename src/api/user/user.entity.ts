@@ -1,4 +1,4 @@
-import { StatusLiteralEnum, StatusEnum } from '../../types/status.enum'
+import { StatusEnum } from '../../types/status.enum'
 import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity('users')
@@ -18,6 +18,6 @@ export class User extends BaseEntity {
     @UpdateDateColumn({ type: 'timestamp', name: 'updated_at', nullable: false })
     updatedAt: Date
 
-    @Column({ type: 'enum', enum: StatusLiteralEnum, nullable: false })
+    @Column({ type: 'varchar', default: StatusEnum.ACTIVE, nullable: false })
     status: StatusEnum
 }
