@@ -21,6 +21,7 @@ import { OccupationModule } from './api/occupation/occupation.module'
 import { OrganizationModule } from './api/organization/organization.module'
 import { GroupModule } from './api/group/group.module'
 import { VolumeModule } from './api/volume/volume.module'
+import { AppController } from './api/app/app.controller'
 
 @Module({
   imports: [
@@ -45,7 +46,7 @@ import { VolumeModule } from './api/volume/volume.module'
     GroupModule,
     VolumeModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: []
 })
 export class AppModule {

@@ -17,9 +17,13 @@ async function bootstrap () {
     .build()
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig)
   const schemaRoute = './src/utils/const.schemas.ts'
+  // const pathsRoute = './src/utils/const.paths.ts'
   if (!existsSync(schemaRoute)) {
     writeFileSync(schemaRoute, 'export const schemas = ' + JSON.stringify(swaggerDocument.components.schemas))
   }
+  // if (!existsSync(pathsRoute)) {
+  //   writeFileSync(pathsRoute, 'export const paths = ' + JSON.stringify(swaggerDocument.paths))
+  // }
   SwaggerModule.setup('docs', app, swaggerDocument)
   await app.listen(AppModule.port)
 }
