@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { AppModule } from './app.module'
+import { existsSync, writeFileSync } from 'fs'
 
 async function bootstrap () {
   const globalPrefix = 'api'
@@ -15,6 +16,10 @@ async function bootstrap () {
     .setVersion('1.0')
     .build()
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig)
+  const schemaRoute = './src/utils/const.schemas.ts'
+  if (!existsSync(schemaRoute)) {
+    writeFileSync(schemaRoute, 'export const schemas = ' + JSON.stringify(swaggerDocument.components.schemas))
+  }
   SwaggerModule.setup('docs', app, swaggerDocument)
   await app.listen(AppModule.port)
 }

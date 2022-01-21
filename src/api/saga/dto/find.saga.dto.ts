@@ -34,7 +34,8 @@ export class FindSagaDto {
     @ApiProperty({
       minimum: 2,
       maximum: 2000,
-      description: 'at wich chapter end the saga'
+      description: 'at wich chapter end the saga',
+      required: false
     })
     @Expose()
     to: number | null

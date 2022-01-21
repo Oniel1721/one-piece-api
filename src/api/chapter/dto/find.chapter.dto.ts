@@ -37,7 +37,8 @@ export class FindChapterDto extends FindCommonDto {
     chapterUrl: string
 
     @ApiProperty({
-      type: FindVolumeDto
+      type: FindVolumeDto,
+      required: false
     })
     volume: FindVolumeDto | null
 

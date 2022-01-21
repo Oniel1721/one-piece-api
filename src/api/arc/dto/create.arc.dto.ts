@@ -51,10 +51,8 @@ export class CreateArcDto {
     @ApiProperty({
       minimum: 2,
       maximum: 2000,
-      description: 'count of chapters of the arc',
-      required: false
+      description: 'count of chapters of the arc'
     })
-    @IsOptional()
     @IsInt()
     @Min(2)
     @Max(2000)

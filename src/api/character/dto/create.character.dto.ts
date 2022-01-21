@@ -7,7 +7,8 @@ export class CreateCharacterDto {
     @ApiProperty({
       minLength: 1,
       maxLength: 100,
-      description: 'first name of the character'
+      description: 'first name of the character',
+      required: false
     })
     @IsOptional()
     @IsString()
@@ -16,7 +17,8 @@ export class CreateCharacterDto {
 
     @ApiProperty({
       isArray: true,
-      description: 'list of last names of the character'
+      description: 'list of last names of the character',
+      required: false
     })
     @IsOptional()
     @IsNotEmpty()
@@ -26,7 +28,8 @@ export class CreateCharacterDto {
     @ApiProperty({
       minLength: 1,
       maxLength: 100,
-      description: 'nickname of the character'
+      description: 'nickname of the character',
+      required: false
     })
     @IsOptional()
     @IsString()
@@ -36,7 +39,8 @@ export class CreateCharacterDto {
     @ApiProperty({
       minLength: 2,
       maxLength: 5,
-      description: 'age of the character'
+      description: 'age of the character',
+      required: false
     })
     @IsOptional()
     @IsPositive()
@@ -45,7 +49,8 @@ export class CreateCharacterDto {
 
     @ApiProperty({
       minimum: 0,
-      description: 'height in m of the character'
+      description: 'height in m of the character',
+      required: false
     })
     @IsOptional()
     @IsPositive()
@@ -54,7 +59,8 @@ export class CreateCharacterDto {
     @ApiProperty({
       minLength: 2,
       maxLength: 5,
-      description: 'height in cm of the character'
+      description: 'height in cm of the character',
+      required: false
     })
     @IsOptional()
     @IsDateString()
@@ -64,7 +70,8 @@ export class CreateCharacterDto {
     @ApiProperty({
       minLength: 10,
       maxLength: 1000,
-      description: 'info about the debut of the character'
+      description: 'info about the debut of the character',
+      required: false
     })
     @IsOptional()
     @IsString()
@@ -73,7 +80,8 @@ export class CreateCharacterDto {
 
     @ApiProperty({
       maxLength: 100,
-      description: 'link of the character section on the one piece wiki'
+      description: 'link of the character section on the one piece wiki',
+      required: false
     })
     @IsOptional()
     @IsUrl()
@@ -81,7 +89,8 @@ export class CreateCharacterDto {
 
     @ApiProperty({
       maxLength: 100,
-      description: 'link of the character\'s avatar image'
+      description: 'link of the character\'s avatar image',
+      required: false
     })
     @IsOptional()
     @IsUrl()
@@ -89,47 +98,69 @@ export class CreateCharacterDto {
 
     @ApiProperty({
       description: 'more info about the character',
-      type: [CharacterInfo]
+      type: [CharacterInfo],
+      required: false
     })
     @IsOptional()
     @IsArray()
     @IsNotEmpty()
     moreInfo: CharacterInfo[] | null
 
-    @ApiProperty()
+    @ApiProperty({
+      type: [RelationId],
+      required: false
+    })
     @IsOptional()
     @IsArray()
     @IsNotEmpty()
     hakis: RelationId[] | null
 
-    @ApiProperty()
+    @ApiProperty({
+      type: [RelationId],
+      required: false
+    })
     @IsOptional()
     @IsArray()
     @IsNotEmpty()
     akumaNoMis: RelationId[] | null
 
-    @ApiProperty()
+    @ApiProperty({
+      type: [RelationId],
+      required: false
+    })
     @IsOptional()
     @IsArray()
     @IsNotEmpty()
     races: RelationId[] | null
 
-    @ApiProperty()
+    @ApiProperty({
+      type: RelationId,
+      required: false
+    })
     @IsOptional()
     @IsNotEmptyObject()
     occupation: RelationId | null
 
-    @ApiProperty()
+    @ApiProperty({
+      type: RelationId,
+      required: false
+    })
     @IsOptional()
     @IsNotEmptyObject()
     type: RelationId | null
 
-    @ApiProperty()
+    @ApiProperty({
+      type: RelationId,
+      required: false
+    })
     @IsOptional()
     @IsNotEmptyObject()
     nationality: RelationId | null
 
-    @ApiProperty()
+    @ApiProperty({
+      type: RelationId,
+      required: false
+    })
     @IsOptional()
     @IsNotEmptyObject()
     debut: RelationId | null

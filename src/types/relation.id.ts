@@ -1,1 +1,1 @@
-export type RelationId = {id: number}
+export class RelationId {id: number}

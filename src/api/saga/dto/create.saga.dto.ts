@@ -48,7 +48,6 @@ export class CreateSagaDto {
       description: 'count of chapters of the saga',
       required: false
     })
-    @IsOptional()
     @IsInt()
     @Min(2)
     @Max(2000)

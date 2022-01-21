@@ -13,14 +13,16 @@ export class FindCharacterDto extends FindCommonDto {
     @ApiProperty({
       minLength: 1,
       maxLength: 100,
-      description: 'first name of the character'
+      description: 'first name of the character',
+      required: false
     })
     @Expose()
     firstName: string | null
 
     @ApiProperty({
       isArray: true,
-      description: 'list of last names of the character'
+      description: 'list of last names of the character',
+      required: false
     })
     @Expose()
     lastNames: string[] | null
@@ -28,7 +30,8 @@ export class FindCharacterDto extends FindCommonDto {
     @ApiProperty({
       minLength: 1,
       maxLength: 100,
-      description: 'nickname of the character'
+      description: 'nickname of the character',
+      required: false
     })
     @Expose()
     nickName: string | null
@@ -36,7 +39,8 @@ export class FindCharacterDto extends FindCommonDto {
     @ApiProperty({
       minLength: 2,
       maxLength: 5,
-      description: 'age of the character'
+      description: 'age of the character',
+      required: false
     })
     @Expose()
     age: string | null
@@ -44,7 +48,8 @@ export class FindCharacterDto extends FindCommonDto {
     @ApiProperty({
       minLength: 2,
       maxLength: 5,
-      description: 'height in cm of the character'
+      description: 'height in cm of the character',
+      required: false
     })
     @Expose()
     height: number | null
@@ -52,7 +57,8 @@ export class FindCharacterDto extends FindCommonDto {
     @ApiProperty({
       minLength: 2,
       maxLength: 5,
-      description: 'height in cm of the character'
+      description: 'height in cm of the character',
+      required: false
     })
     @Expose()
     birthDate: string | null
@@ -60,70 +66,81 @@ export class FindCharacterDto extends FindCommonDto {
     @ApiProperty({
       minLength: 10,
       maxLength: 1000,
-      description: 'info about the debut of the character'
+      description: 'info about the debut of the character',
+      required: false
     })
     @Expose()
     debutInfo: string | null
 
     @ApiProperty({
       maxLength: 100,
-      description: 'link of the character section on the one piece wiki'
+      description: 'link of the character section on the one piece wiki',
+      required: false
     })
     @Expose()
     wikiUrl: string | null
 
     @ApiProperty({
       maxLength: 100,
-      description: 'link of the character\'s avatar image'
+      description: 'link of the character\'s avatar image',
+      required: false
     })
     @Expose()
     avatarUrl: string | null
 
     @ApiProperty({
       description: 'more info about the character',
-      type: [CharacterInfo]
+      type: [CharacterInfo],
+      required: false
     })
     @Expose()
     moreInfo: CharacterInfo[] | null
 
     @ApiProperty({
-      type: [FindHakiDto]
+      type: [FindHakiDto],
+      required: false
     })
     @Expose()
     hakis: FindHakiDto[] | null
 
     @ApiProperty({
-      type: [FindAkumaNoMiDto]
+      type: [FindAkumaNoMiDto],
+      required: false
     })
     @Expose()
     akumaNoMis: FindAkumaNoMiDto[] | null
 
     @ApiProperty({
-      type: [FindRaceDto]
+      type: [FindRaceDto],
+      required: false
     })
     @Expose()
     races: FindRaceDto[] | null
 
     @ApiProperty({
-      type: FindOccupationDto
+      type: FindOccupationDto,
+      required: false
     })
     @Expose()
     occupation: FindOccupationDto | null
 
     @ApiProperty({
-      type: FindCharacterTypeDto
+      type: FindCharacterTypeDto,
+      required: false
     })
     @Expose()
     type: FindCharacterTypeDto | null
 
     @ApiProperty({
-      type: FindNationalityDto
+      type: FindNationalityDto,
+      required: false
     })
     @Expose()
     nationality: FindNationalityDto | null
 
     @ApiProperty({
-      type: FindChapterDto
+      type: FindChapterDto,
+      required: false
     })
     @Expose()
     debut: FindChapterDto | null

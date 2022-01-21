@@ -8,15 +8,14 @@ import {
   Body,
   Post,
   UseGuards,
-  Res
+  Req
 } from '@nestjs/common'
 import { BaseEntity, UpdateResult, Repository } from 'typeorm'
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity'
 import { JwtAuthGuard } from '../api/auth/jwt.guard'
-import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger'
+import { ApiResponse } from '@nestjs/swagger'
 import { UpdateCommonDto } from './common.update.dto'
-import { Response } from 'express'
-import { BearerAuth } from '../types/const.bearer.auth'
+import { Request } from 'express'
 
 export class CommonController<
   Entity extends BaseEntity,
@@ -35,6 +34,11 @@ export class CommonController<
     return await this._commonService.findAll(this._findDto)
   }
 
+  @Get('/schema')
+  async findSchema (@Req() req: Request) {
+    return this._commonService.findSchema(req.path)
+  }
+
   @Get(':id')
   async get (@Param('id', ParseIntPipe) id: number): Promise<FindDto> {
     return await this._commonService.findById(id, this._findDto)
@@ -43,28 +47,24 @@ export class CommonController<
   @ApiResponse({
     status: 201
   })
-  @ApiBearerAuth(BearerAuth)
   @UseGuards(JwtAuthGuard)
   @Post()
-  async create (@Body() body: CreateDto, @Res() res: Response):Promise<FindDto> {
-    res.status(201)
-    return await this._commonService.create(body, this._findDto)
+  async create (@Body() body: CreateDto):Promise<FindDto> {
+    const created = await this._commonService.create(body, this._findDto)
+    return created
   }
 
   @ApiResponse({
     type: UpdateCommonDto,
     status: 200
   })
-  @ApiBearerAuth(BearerAuth)
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   async update (
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: QueryDeepPartialEntity<Entity>,
-    @Res() res: Response
+    @Body() body: QueryDeepPartialEntity<Entity>
   ): Promise<UpdateCommonDto> {
     const updated: UpdateResult = await this._commonService.update(id, body)
-    res.status(200)
     return plainToInstance(UpdateCommonDto, updated)
   }
 }

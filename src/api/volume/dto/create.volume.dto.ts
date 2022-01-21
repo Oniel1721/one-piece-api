@@ -13,7 +13,8 @@ export class CreateVolumeDto {
 
   @ApiProperty({
     description: 'sbs of the volume',
-    type: SBS
+    type: SBS,
+    required: false
   })
   @IsOptional()
   @IsNotEmpty()

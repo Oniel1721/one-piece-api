@@ -9,11 +9,40 @@ import {
 } from 'typeorm'
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity'
 import { ClassConstructor, plainToInstance } from 'class-transformer'
+import { schemas } from './const.schemas'
 
 export class CommonService<Entity extends BaseEntity, Repo extends Repository<Entity>> {
   public readonly entityName: string;
   constructor (private readonly _commonRepository: Repo) {
     this.entityName = this._commonRepository.metadata.name
+  }
+
+  private filterSchema (name: string) {
+    const schemaName = `find${name}dto`
+    for (const prop in schemas) {
+      const currentSchemaName = prop.toLowerCase()
+      if (schemaName === currentSchemaName) {
+        const schema = schemas[prop]
+        const result = schema.properties
+        for (const resultProp in result) {
+          if (schema.required.includes(resultProp)) {
+            result[resultProp].required = true
+          } else {
+            result[resultProp].required = false
+          }
+        }
+        result.id = undefined
+        result.createdAt = undefined
+        result.updatedAt = undefined
+        return result
+      }
+    }
+    return null
+  }
+
+  findSchema (path: string) {
+    const name = path.split('/')[2].toLowerCase()
+    return this.filterSchema(name)
   }
 
   async findAll<FindDto> (

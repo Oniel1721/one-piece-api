@@ -50,7 +50,10 @@ export class CreateChapterDto {
     @IsNotEmpty()
     chapterUrl: string
 
-    @ApiProperty()
+    @ApiProperty({
+      type: FindVolumeDto,
+      required: false
+    })
     @IsNotEmptyObject()
     @IsOptional()
     volume: FindVolumeDto | null

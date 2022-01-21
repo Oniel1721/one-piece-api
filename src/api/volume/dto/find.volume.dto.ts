@@ -13,7 +13,8 @@ export class FindVolumeDto extends FindCommonDto {
     @ApiProperty({
       description: 'sbs of the volume',
       type: SBS,
-      isArray: true
+      isArray: true,
+      required: false
     })
     @Expose()
     sbs: SBS[] | null

@@ -31,7 +31,8 @@ export class FindArcDto extends FindCommonDto {
   @ApiProperty({
     minimum: 2,
     maximum: 2000,
-    description: 'at wich chapter end the arc'
+    description: 'at wich chapter end the arc',
+    required: false
   })
   @Expose()
   to: number | null
