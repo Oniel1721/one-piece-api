@@ -1,6 +1,6 @@
 import { SBS } from '../../../types/sbs.type'
 import { ApiProperty } from '@nestjs/swagger'
-import { IsInt, IsNotEmptyObject, IsOptional, IsPositive } from 'class-validator'
+import { IsInt, IsNotEmpty, IsOptional, IsPositive } from 'class-validator'
 
 export class CreateVolumeDto {
   @ApiProperty({
@@ -16,6 +16,6 @@ export class CreateVolumeDto {
     type: SBS
   })
   @IsOptional()
-  @IsNotEmptyObject()
-  sbs: SBS | null
+  @IsNotEmpty()
+  sbs: SBS[] | null
 }

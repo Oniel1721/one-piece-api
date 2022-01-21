@@ -9,8 +9,8 @@ export class Volume extends BaseEntity {
     @Column({ type: 'int', unique: true, nullable: false })
     number: number
 
-    @Column({ type: 'jsonb', nullable: false })
-    sbs: SBS | null
+    @Column({ type: 'jsonb', nullable: false, array: true })
+    sbs: SBS[] | null
 
     @CreateDateColumn({ type: 'timestamp', name: 'created_at', nullable: false })
     createdAt: Date

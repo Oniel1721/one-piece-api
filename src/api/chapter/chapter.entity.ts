@@ -27,6 +27,9 @@ export class Chapter extends BaseEntity {
     @Column({ type: 'varchar', nullable: false, name: 'chapter_url' })
     chapterUrl: string
 
+    @Column({ type: 'timestamp', name: 'released_at', nullable: false })
+    releasedAt: Date
+
     @ManyToOne(() => Volume, { eager: true, nullable: true })
     @JoinColumn({ name: 'volume_id' })
     volume: FindVolumeDto | null
