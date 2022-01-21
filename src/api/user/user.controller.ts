@@ -9,6 +9,7 @@ import { User } from './user.entity'
 import { UserService } from './user.service'
 
 @ApiBearerAuth(BearerAuth)
+@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController {
   constructor (
@@ -18,7 +19,6 @@ export class UserController {
   @ApiResponse({
     type: [FindUserDto]
   })
-  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll () {
     return await this._userService.findAll()
@@ -27,7 +27,6 @@ export class UserController {
   @ApiResponse({
     type: FindUserDto
   })
-  @UseGuards(JwtAuthGuard)
   @Get('/me')
   async getProffile (@Req() req: Request) {
     const user = req.user as User
@@ -37,7 +36,6 @@ export class UserController {
   @ApiResponse({
     type: FindUserDto
   })
-  @UseGuards(JwtAuthGuard)
   @Get('/:id')
   async findById (@Param('id', ParseIntPipe) id:number) {
     return await this._userService.findById(id)
@@ -47,15 +45,13 @@ export class UserController {
     type: FindUserDto
   })
   @Post()
-  async create (@Body() body: CreateUserDto, @Res() res: Response) {
-    res.status(201)
+  async create (@Body() body: CreateUserDto) {
     return await this._userService.create(body)
   }
 
   @ApiResponse({
     status: 202
   })
-  @UseGuards(JwtAuthGuard)
   @Delete('/:id')
   async delete (@Param('id', ParseIntPipe) id:number, @Res() res: Response) {
     await this._userService.delete(id)
